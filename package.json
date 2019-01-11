@@ -1,0 +1,29 @@
+{
+  "name": "basic-sass",
+  "version": "0.0.1",
+  "description": "The basic sass style in customized",
+  "main": "index.scss",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BobbyLH/basic-sass.git"
+  },
+  "keywords": [
+    "sass",
+    "scss",
+    "css",
+    "media",
+    "icon",
+    "custom",
+    "website",
+    "html5"
+  ],
+  "author": "bobby.li",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BobbyLH/basic-sass/issues"
+  },
+  "homepage": "https://github.com/BobbyLH/basic-sass#readme"
+}

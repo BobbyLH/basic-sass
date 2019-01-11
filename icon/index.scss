@@ -1,0 +1,244 @@
+@import '../layout/index.scss';
+
+@mixin arrow-tip ($position, $width: 2px, $size: 7px, $color: #ccc) {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  width: $size;
+  height: $size;
+  border: $width solid $color;
+  transform: rotate(45deg);
+  &::before {
+    content: '';
+    position: absolute;
+    left: -5px;
+    right: -5px;
+    top: -5px;
+    bottom: -5px;
+  }
+  @if $position == 'top' {
+    border-right: none;
+    border-bottom: none;
+  } @else if $position == 'right' {
+    border-left: none;
+    border-bottom: none;
+  } @else if $position == 'bottom' {
+    border-top: none;
+    border-left: none;
+  } @else if $position == 'left' {
+    border-top: none;
+    border-right: none;
+  }
+}
+@mixin arrow ($position, $width: 2px, $size: 16px, $color: #484848) {
+  $arrowSize: $size * .6;
+  @include arrow-tip($position, $width, $arrowSize, $color);
+  @if $position == 'left' {
+    transform: rotate(45deg) scale(0.85);
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    width: $width;
+    height: $size;
+    background-color: $color;
+    @if $position == 'top' {
+      transform: rotate(-45deg) translate(0px, -1px);
+      top: 1px;
+      left: 0;
+      transform-origin: left top;
+    } @else if $position == 'right' {
+      transform: rotate(45deg) translate(0px, -1px);
+      top: 1px;
+      right: 0;
+      transform-origin: right top;
+    } @else if $position == 'bottom' {
+      transform: rotate(-45deg) translate(0px, 3px);
+      bottom: 1px;
+      right: 0;
+      transform-origin: left bottom;
+    } @else if $position == 'left' {
+      transform: rotate(-135deg);
+      top: $arrowSize / 1.41421356;
+      left: 0;
+      transform-origin: 30% 5%;
+    }
+  }
+}
+// used in pseudo element ::before, ::after
+@mixin pseudoArrow ($position, $width: 2px, $size: 7px, $color: #ccc) {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  width: $size;
+  height: $size;
+  border: $width solid $color;
+  transform: rotate(45deg);
+
+  @if $position == 'top' {
+    border-right: none;
+    border-bottom: none;;
+  } @else if $position == 'right' {
+    border-left: none;
+    border-bottom: none;
+  } @else if $position == 'bottom' {
+    border-top: none;
+    border-left: none;
+  } @else if $position == 'left' {
+    border-top: none;
+    border-right: none;
+  }
+}
+@mixin cross ($size: 20px, $bold: 2px, $color: gray, $bgColor: transparent) {
+  width: $size;
+  height: $size;
+  position: relative;
+  background-color: $bgColor;
+  &::before,
+  &::after{
+    content: "";
+    position: absolute;
+    height: 0.8 * $size;
+    width: $bold;
+    top: 0.1 * $size;
+    right: ($size - $bold) / 2;
+    background-color: $color;
+    border-radius: 0.5 * $bold;
+  }
+  &::before{
+    transform: rotate(45deg);
+  }
+  &::after{
+    transform: rotate(-45deg);
+  }
+}
+@mixin add ($size: 14px, $bold: 2px, $color:#fc5832) {
+  width: $size;
+  height: $size;
+  position: absolute;
+  &::before,
+  &::after{
+    content: "";
+    position: absolute;
+    height: 0.8 * $size;
+    width: $bold;
+    top: 0.1 * $size;
+    right: ($size - $bold) / 2;
+    background-color: $color;
+    border-radius: 0.5 * $bold;
+  }
+  &::before{
+    transform: rotate(180deg);
+  }
+  &::after{
+    transform: rotate(-90deg);
+  }
+}
+@mixin menu ($width: 18px, $bold: 2px, $color:#FFFFFF) {
+  width: $width;
+  height: $bold;
+  box-sizing: border-box;
+  border: $bold/2 solid $color;
+  position: relative;
+  &::before{
+    content: '';
+    width: $width;
+    box-sizing: border-box;
+    position: absolute;
+    height: $bold;
+    border: $bold/2 solid $color;
+    top: -($bold * 3.5);
+    @include centralize-translate('h');
+  }
+  &::after{
+    content: '';
+    width: $width;
+    box-sizing: border-box;
+    position: absolute;
+    height: $bold;
+    border: $bold/2 solid $color;
+    top: ($bold * 2.5);
+    @include centralize-translate('h');
+  }
+}
+@mixin exclamatory ($width, $height, $color, $inclination: 0.1) {
+  position: relative;
+  width: $width;
+  height: $height + 1.6 * $width;
+  border-width: $height ($inclination*$height) 0;
+  border-style: solid solid none;
+  border-color: $color transparent transparent;
+  &::after{
+    content: '';
+    width: $width;
+    height: $width;
+    border-radius: 50%;
+    background-color: $color;
+    position: absolute;
+    top: 0.6 * $width;
+    @include centralize-translate('h');
+  }
+}
+@mixin triangle ($direction, $width, $color, $inclination: 0.5) {
+  width: 0;
+  height: 0;
+  @if $direction == 'top' {
+    border-left: $width * $inclination solid transparent;
+    border-right: $width * $inclination solid transparent;
+    border-bottom: $width solid $color;
+  } @else if $direction == 'bottom' {
+    border-left: $width * $inclination solid transparent;
+    border-right: $width * $inclination solid transparent;
+    border-top: $width solid $color;
+  } @else if $direction == 'left' {
+    border-top: $width * $inclination solid transparent;
+    border-bottom: $width * $inclination solid transparent;
+    border-right: $width solid $color;
+  } @else if $direction == 'right' {
+    border-top: $width * $inclination solid transparent;
+    border-bottom: $width * $inclination solid transparent;
+    border-left: $width solid $color;
+  }
+}
+@mixin ring ($radius, $bold, $color) {
+  width: $radius;
+  height: $radius;
+  border: $bold solid $color;
+  border-radius: 50%;
+}
+
+// 圈和勾
+@mixin pseudoRing ($width: 16px, $height: $width, $color: #ff3737 ) {
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: $width;
+    height: $width;
+    border-radius: 50%;
+    border: 1px solid $color;
+  }
+}
+@mixin hook ($width: 8px, $height: 4px, $rotateDeg: -45deg, $color: #ff3737) {
+  &::after {
+    position: absolute;
+    top: 5px;
+    left: 4px;
+    content: '';
+    width: $width;
+    height: $height;
+    border-left: 1px solid $color;
+    border-bottom: 1px solid $color;
+    transform: rotateZ($rotateDeg)
+  }
+}
+
+@mixin ringHook ($top: 0, $left: 0) {
+  position: relative;
+  top: $top;
+  left: $left;
+  @include pseudoRing();
+  @include hook();
+}

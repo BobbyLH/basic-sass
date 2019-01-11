@@ -1,0 +1,146 @@
+@import './variable/index.scss';
+@import './index.scss';
+
+html {
+  // Font rendering anti-aliasing
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  overflow-x: hidden;
+  position: relative;
+}
+*, :after, :before {
+  box-sizing: border-box;
+  outline: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+img {
+  border: 0;
+  display: inline-block;
+  color: transparent;
+}
+a {
+  text-decoration: none;
+  outline: none;
+  // color: #000;
+  color: inherit;
+  display: inline-block;
+}
+ul, ol {
+  list-style-type: none;
+}
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+main {
+  display: block;
+}
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+form,
+input,
+button,
+textarea,
+p,
+th,
+td {
+  padding: 0;
+  margin: 0;
+}
+input,
+button {
+  outline: none;
+  &::placeholder {
+    color: rgb(194, 197, 210);
+  }
+}
+input {
+  &::-ms-clear{
+    display:none;
+  }
+  &::-ms-reveal{
+    display:none;
+  }
+  &::-webkit-credentials-auto-fill-button {
+    visibility: hidden;
+    display: none !important;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+  }
+}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #9b9b9b;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.hidden {
+  display: none !important;
+  @at-root &-phone{
+    @include phone () {
+      display: none !important;
+    }
+  }
+  @at-root &-handheld{
+    @include handheld () {
+      display: none !important;
+    }
+  }
+  @at-root &-tablet{
+    @include tablet () {
+      display: none !important;
+    }
+  }
+  @at-root &-laptop{
+    @include laptop () {
+      display: none !important;
+    }
+  }
+  @at-root &-desktop{
+    @include desktop () {
+      display: none !important;
+    }
+  }
+}
+
+// hardware speed
+.speed{
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  perspective: 1000;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
