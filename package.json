@@ -1,6 +1,6 @@
 {
   "name": "basic-sass",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "The basic sass style in customized",
   "main": "index.scss",
   "scripts": {
