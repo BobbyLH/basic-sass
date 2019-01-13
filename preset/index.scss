@@ -1,5 +1,4 @@
-@import './variable/index.scss';
-@import './index.scss';
+@import '../media/index.scss';
 
 html {
   // Font rendering anti-aliasing
@@ -100,6 +99,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
   font-weight: 500;
 }
 
+.hide,
 .hidden {
   display: none !important;
   @at-root &-phone{

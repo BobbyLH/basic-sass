@@ -81,25 +81,14 @@
   overflow: hidden;
 }
 
-// couple lines ellipsis
-@mixin ellipsis-2() {
+// mutiple lines ellipsis
+@mixin ellipsis-line($line: 2) {
   word-break: break-word;
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
   text-overflow: -o-ellipsis-lastline;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-// treble lines ellipsis
-@mixin ellipsis-3() {
-  word-break: break-word;
-  display: -webkit-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-overflow: -o-ellipsis-lastline;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: $line;
   -webkit-box-orient: vertical;
 }
 
@@ -118,10 +107,6 @@
     right: 0;
     bottom: 0;
     width: $fSize;
-    // width: $fSize * 1.5;
-    // height: $fSize;
-    // line-height: $fSize/2;
-    // display: block;
     padding-left: 3px;
     box-sizing: border-box;
     background-color: $bgColor;

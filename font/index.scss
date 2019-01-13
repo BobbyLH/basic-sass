@@ -1,16 +1,12 @@
-@mixin hmly-font () {
+@mixin font-opensans () {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
-@mixin hmly-font-opensans () {
-  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-}
-
-@mixin hmly-font-montserrat () {
+@mixin font-montserrat () {
   font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 }
 
-@mixin hmly-force-font ($fontSize) {
+@mixin force-font ($fontSize: 12) {
   display: inline-block;
   font-size: 12px;
   text-size-adjust:none;
